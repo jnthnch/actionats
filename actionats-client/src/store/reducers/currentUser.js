@@ -1,0 +1,20 @@
+import { SET_CURRENT_USER } from '../actionTypes';
+
+const DEFAULT_STATE = {
+  isAuthenticated: false, //true when user is logged in
+  user: {} // user info
+}
+
+export default (state = DEFAULT_STATE, action) => {
+  switch (action.type) {
+    case SET_CURRENT_USER:
+      var newState = {
+        ...state,
+        isAuthenticated: !!Object.keys(action.user).length,
+        user: action.user
+      };
+      return newState
+    default:
+      return state
+  }
+}
